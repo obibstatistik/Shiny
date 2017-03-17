@@ -27,7 +27,10 @@ dashboardPage(
     
       tabItem(tabName = "dashboards",
         fixedPage(column(12,
-            foreach(i=dirs) %do% box(width = 6, includeMarkdown(paste0((gsub(".*/", "", i)),"/readme.md")))
+          foreach(i=dirs) %do%  
+            if (file.exists(paste0((gsub(".*/", "", i)),"/readme.md"))) { 
+              box(width = 6,includeMarkdown(paste0((gsub(".*/", "", i)),"/readme.md"))) 
+            }                      
           )
         )
       ),
