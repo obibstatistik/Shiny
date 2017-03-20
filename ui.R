@@ -3,7 +3,7 @@ library(shiny)
 library(shinydashboard)
 library(shinyjs)
 
-dirs <- list.dirs(path = ".", recursive=FALSE)
+dirs <- list.dirs(path = "..", recursive=FALSE)
 
 dashboardPage(
   skin = "blue",
@@ -26,10 +26,10 @@ dashboardPage(
     tabItems(
     
       tabItem(tabName = "dashboards",
-        fixedPage(column(12,
+        fixedPage(column(12,               
           foreach(i=dirs) %do%  
-            if (file.exists(paste0((gsub(".*/", "", i)),"/readme.md"))) { 
-              box(width = 6,includeMarkdown(paste0((gsub(".*/", "", i)),"/readme.md"))) 
+            if (file.exists(paste0(i,"/readme.md"))) { 
+              box(width = 6,includeMarkdown(paste0(i,"/readme.md"))) 
             }                      
           )
         )
